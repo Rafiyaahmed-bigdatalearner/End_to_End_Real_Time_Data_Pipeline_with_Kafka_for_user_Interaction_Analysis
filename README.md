@@ -63,7 +63,10 @@ Producer → Kafka → Aggregator → JSON Store → Streamlit Dashboard
 
 ```bash
 pip install -r requirements.txt
+
 ---
+
+## 
 2. Start Kafka & Zookeeper
 docker-compose up -d
 docker ps
