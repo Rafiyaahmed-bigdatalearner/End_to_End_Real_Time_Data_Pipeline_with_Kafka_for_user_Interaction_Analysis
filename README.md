@@ -8,10 +8,7 @@ It demonstrates **production-level data engineering practices**, including event
 ---
 
 ## 🏗️ Architecture
-
-
 Producer → Kafka → Aggregator → JSON Store → Streamlit Dashboard
-
 
 ### Components
 - **Producer (`producer.py`)**: Simulates user events (`click`, `view`, `purchase`) and publishes them to Kafka.  
@@ -60,18 +57,13 @@ Producer → Kafka → Aggregator → JSON Store → Streamlit Dashboard
 - Docker Desktop  
 
 ### 1. Install Dependencies
-
 ```bash
 pip install -r requirements.txt
-
----
-
-## 
 2. Start Kafka & Zookeeper
 docker-compose up -d
 docker ps
 
-Verify services:
+Verify services are running:
 
 Kafka → localhost:9092
 Zookeeper → localhost:2181
@@ -104,38 +96,33 @@ Real-time threshold alerts
 ⚠️ Alerting
 Configurable threshold in aggregator.py
 Alerts triggered when user/item activity exceeds threshold
-Logged in real-time in aggregator console
+Alerts logged in real-time in aggregator console
 🧠 Design Considerations
-
 Scalability
-
 Kafka partitions allow horizontal scaling
 Multiple consumers can process in parallel
-
 Fault Tolerance
-
 Kafka retains messages for replay
-Can be extended with checkpointing
-
+Aggregator can be extended with checkpointing
 Extensibility
-
-Replace JSON with:
-Redis
-PostgreSQL
-Data warehouse
+JSON storage can be replaced with:
+Redis (low-latency)
+PostgreSQL (durable storage)
+Data warehouse (analytics)
 🔮 Future Improvements
-Windowed aggregations
-Kafka Streams / Faust
-Persistent state (Redis / RocksDB)
-REST API
-Kubernetes deployment
-Monitoring (Prometheus + Grafana)
+Windowed aggregations (tumbling/sliding)
+Stateful processing frameworks (Kafka Streams / Faust)
+Persistent state storage (Redis / RocksDB)
+REST API for aggregated metrics
+Deployment using Kubernetes
+Monitoring & alerting (Prometheus + Grafana)
 📚 Skills Demonstrated
 Real-time data streaming
 Event-driven architecture
-Kafka producer/consumer
+Kafka producer/consumer patterns
 Stateful aggregation
-Docker deployment
+Docker-based deployment
+Data pipeline design & monitoring
 🤝 Acknowledgement
 
 Some parts of the implementation were developed with AI assistance.
