@@ -9,6 +9,7 @@ It demonstrates **production-level data engineering practices**, including event
 
 ## 🏗️ Architecture
 
+
 Producer → Kafka → Aggregator → JSON Store → Streamlit Dashboard
 
 
@@ -59,6 +60,7 @@ Producer → Kafka → Aggregator → JSON Store → Streamlit Dashboard
 - Docker Desktop  
 
 ### 1. Install Dependencies
+
 ```bash
 pip install -r requirements.txt
 2. Start Kafka & Zookeeper
@@ -87,7 +89,7 @@ Open dashboard: http://localhost:8501
 
 📸 Streamlit Dashboard Demo
 
-Here are snapshots of the live dashboard visualizing user interactions:
+Here are snapshots of the live dashboard:
 
 <p float="left"> <img src="output_images/dashboard_screenshot1.png" width="300" /> <img src="output_images/dashboard_screenshot2.png" width="300" /> <img src="output_images/dashboard_screenshot3.png" width="300" /> </p>
 📈 Metrics & Insights
@@ -98,40 +100,39 @@ Real-time threshold alerts
 ⚠️ Alerting
 Configurable threshold in aggregator.py
 Alerts triggered when user/item activity exceeds threshold
-Alerts logged in real-time in aggregator console
+Logged in real-time in aggregator console
 🧠 Design Considerations
 
 Scalability
 
 Kafka partitions allow horizontal scaling
-Multiple consumers can process in parallel using consumer groups
+Multiple consumers can process in parallel
 
 Fault Tolerance
 
 Kafka retains messages for replay
-Aggregator can be extended with checkpointing
+Can be extended with checkpointing
 
 Extensibility
 
-JSON storage can be replaced with:
-Redis (low-latency)
-PostgreSQL (durable storage)
-Data warehouse (analytics)
+Replace JSON with:
+Redis
+PostgreSQL
+Data warehouse
 🔮 Future Improvements
-Windowed aggregations (tumbling/sliding)
-Stateful processing frameworks (Kafka Streams / Faust)
-Persistent state storage (Redis / RocksDB)
-REST API for aggregated metrics
-Deployment using Kubernetes
-Monitoring & alerting (Prometheus + Grafana)
+Windowed aggregations
+Kafka Streams / Faust
+Persistent state (Redis / RocksDB)
+REST API
+Kubernetes deployment
+Monitoring (Prometheus + Grafana)
 📚 Skills Demonstrated
 Real-time data streaming
 Event-driven architecture
-Kafka producer/consumer patterns
+Kafka producer/consumer
 Stateful aggregation
-Docker-based deployment
-Data pipeline design & monitoring
+Docker deployment
 🤝 Acknowledgement
 
-Some parts of the implementation and setup guidance were developed with AI assistance.
-All design decisions, testing, and validation were performed independently.
+Some parts of the implementation were developed with AI assistance.
+All testing and validation were done independently.
