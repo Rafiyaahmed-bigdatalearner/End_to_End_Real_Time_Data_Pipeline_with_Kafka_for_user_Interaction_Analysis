@@ -50,80 +50,136 @@ Producer → Kafka → Aggregator → JSON Store → Streamlit Dashboard
 
 ---
 
-## 🛠️ Setup Instructions
-
-### Prerequisites
-- Python 3.10+  
-- Docker Desktop  
+## 🚀 Setup & Execution
 
 ### 1. Install Dependencies
+
 ```bash
 pip install -r requirements.txt
-2. Start Kafka & Zookeeper
+```
+
+### 2. Start Kafka & Zookeeper
+
+```bash
 docker-compose up -d
 docker ps
+```
 
-Verify services are running:
+Verify that services are running:
 
-Kafka → localhost:9092
-Zookeeper → localhost:2181
-3. Run the Pipeline
+* **Kafka** → `localhost:9092`
+* **Zookeeper** → `localhost:2181`
 
-Terminal 1 – Producer
+---
 
+## ▶️ Run the Pipeline
+
+Open three separate terminals:
+
+### Terminal 1 – Producer
+
+```bash
 python producer.py
+```
 
-Terminal 2 – Aggregator
+### Terminal 2 – Aggregator
 
+```bash
 python aggregator.py
+```
 
-Terminal 3 – Dashboard
+### Terminal 3 – Dashboard
 
+```bash
 streamlit run dashboard.py
+```
 
-Open dashboard: http://localhost:8501
+Open the dashboard in your browser:
 
-📸 Streamlit Dashboard Demo
+```
+http://localhost:8501
+```
 
-Here are snapshots of the live dashboard:
+---
 
-<p float="left"> <img src="output_images/dashboard_screenshot1.png" width="300" /> <img src="output_images/dashboard_screenshot2.png" width="300" /> <img src="output_images/dashboard_screenshot3.png" width="300" /> </p>
-📈 Metrics & Insights
-Interactions per user
-Interactions per item
-Event type distribution
-Real-time threshold alerts
-⚠️ Alerting
-Configurable threshold in aggregator.py
-Alerts triggered when user/item activity exceeds threshold
-Alerts logged in real-time in aggregator console
-🧠 Design Considerations
-Scalability
-Kafka partitions allow horizontal scaling
-Multiple consumers can process in parallel
-Fault Tolerance
-Kafka retains messages for replay
-Aggregator can be extended with checkpointing
-Extensibility
-JSON storage can be replaced with:
-Redis (low-latency)
-PostgreSQL (durable storage)
-Data warehouse (analytics)
-🔮 Future Improvements
-Windowed aggregations (tumbling/sliding)
-Stateful processing frameworks (Kafka Streams / Faust)
-Persistent state storage (Redis / RocksDB)
-REST API for aggregated metrics
-Deployment using Kubernetes
-Monitoring & alerting (Prometheus + Grafana)
-📚 Skills Demonstrated
-Real-time data streaming
-Event-driven architecture
-Kafka producer/consumer patterns
-Stateful aggregation
-Docker-based deployment
-Data pipeline design & monitoring
-🤝 Acknowledgement
+## 📊 Streamlit Dashboard
 
-Some parts of the implementation were developed with AI assistance.
+Below are example snapshots of the live dashboard:
+
+<p float="left">
+  <img src="output_images/dashboard_screenshot1.png" width="300" />
+  <img src="output_images/dashboard_screenshot2.png" width="300" />
+  <img src="output_images/dashboard_screenshot3.png" width="300" />
+</p>
+
+---
+
+## 📈 Metrics & Insights
+
+The dashboard provides real-time visibility into:
+
+* Interactions per user
+* Interactions per item
+* Event type distribution
+* Real-time threshold alerts
+
+---
+
+## ⚠️ Alerting
+
+* Thresholds can be configured in `aggregator.py`
+* Alerts are triggered when user or item activity exceeds defined limits
+* Alerts are logged in real time in the aggregator console
+
+---
+
+## 🧠 Design Considerations
+
+### Scalability
+
+* Kafka partitions enable horizontal scaling
+* Multiple consumers can process data in parallel
+
+### Fault Tolerance
+
+* Kafka retains messages for replay
+* Aggregator can be extended with checkpointing
+
+### Extensibility
+
+Current JSON storage can be replaced with:
+
+* **Redis** (low latency)
+* **PostgreSQL** (durable storage)
+* **Data warehouse** (analytics workloads)
+
+---
+
+## 🔮 Future Improvements
+
+* Windowed aggregations (tumbling/sliding windows)
+* Stateful processing frameworks (Kafka Streams / Faust)
+* Persistent state storage (Redis / RocksDB)
+* REST API for exposing aggregated metrics
+* Kubernetes-based deployment
+* Monitoring & alerting (Prometheus + Grafana)
+
+---
+
+## 📚 Skills Demonstrated
+
+* Real-time data streaming
+* Event-driven architecture
+* Kafka producer/consumer patterns
+* Stateful aggregation
+* Docker-based deployment
+* Data pipeline design and monitoring
+
+---
+
+## 🤝 Acknowledgement
+
+Some parts of this implementation were developed with AI assistance.
+All testing, validation, and integration were performed independently.
+developed with AI assistance.
 All testing and validation were done independently.
